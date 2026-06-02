@@ -5,7 +5,7 @@ const PRECACHE = [
   '/style.css',
   '/script.js',
   '/offline.html',
-  '/img/updated/new_rnbo_logo_cropped.PNG',
+  '/img/updated/new_rnbo_logo_cropped.png',
   '/img/icons/new_rainbow_shape_icon.png'
 ];
 
