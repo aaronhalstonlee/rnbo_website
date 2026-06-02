@@ -2,11 +2,15 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import { getAuth, connectAuthEmulator, createUserWithEmailAndPassword, sendEmailVerification, applyActionCode } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  projectId: "demo_project",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyB7ub6laXL3hUdZ_cxMIIRaLQS-inZGJu4",
+  authDomain: "rnbo-test-2.firebaseapp.com",
+  projectId: "rnbo-test-2",
+  storageBucket: "rnbo-test-2.firebasestorage.app",
+  messagingSenderId: "225416844432",
+  appId: "1:225416844432:web:1e12e87e77bbc20c5b7415",
+  measurementId: "G-6JN094D5N9"
 };
+
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -101,16 +105,3 @@ window.addEventListener("DOMContentLoaded", () => {
 if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("sw.js").catch((err) => console.error("Service worker registration failed:", err));
 }
-
-async function createTestUser() {
-  const email = "testuser@example.com";
-  const password = "password123";
-  const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-  await sendEmailVerification(userCredential.user, {
-    url: "http://127.0.0.1:8000/",
-    handleCodeInApp: true
-  });
-  console.log("Verification email sent");
-}
-
-window.createTestUser = createTestUser;
