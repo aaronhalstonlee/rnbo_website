@@ -62,43 +62,48 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   } catch (e) { /* ignore malformed referrer */ }
 
+  const verified = urlParams.get("verified") === "true";
   const mode = urlParams.get("mode") || refMode;
   const actionCode = urlParams.get("oobCode") || refCode;
 
-  if (mode === "verifyEmail" && actionCode) {
-    const verificationPage = document.getElementById("verification-page");
-    const messageEl = document.getElementById("verification-message");
-    const homeBtn = document.getElementById("verification-home-btn");
+  const verificationPage = document.getElementById("verification-page");
+  const messageEl = document.getElementById("verification-message");
+  const homeBtn = document.getElementById("verification-home-btn");
 
+  function showVerificationOverlay(message) {
     document.getElementById("welcome_cont").hidden = true;
     verificationPage.hidden = false;
     verificationPage.classList.add("active");
     window.scrollTo({ top: 0, behavior: "smooth" });
+    messageEl.textContent = message;
+    homeBtn.hidden = false;
+  }
 
-    messageEl.textContent = "Verifying your email now...";
+  if (mode === "verifyEmail" && actionCode) {
+    showVerificationOverlay("Verifying your email now...");
 
     applyActionCode(auth, actionCode)
       .then(() => {
         messageEl.textContent = "Success! Your email is verified. You can now return to RNBO.";
-        homeBtn.hidden = false;
       })
       .catch(() => {
         messageEl.textContent = "Verification failed. This link may be expired or already used.";
-        homeBtn.hidden = false;
       });
-
-    homeBtn.addEventListener("click", (event) => {
-      event.preventDefault();
-      verificationPage.classList.remove("active");
-      verificationPage.addEventListener(
-        "transitionend",
-        () => {
-          verificationPage.hidden = true;
-        },
-        { once: true }
-      );
-    });
+  } else if (verified) {
+    showVerificationOverlay("Your email has been verified. You can now return to RNBO.");
   }
+
+  homeBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    verificationPage.classList.remove("active");
+    verificationPage.addEventListener(
+      "transitionend",
+      () => {
+        verificationPage.hidden = true;
+      },
+      { once: true }
+    );
+  });
 });
 
 
