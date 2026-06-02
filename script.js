@@ -84,7 +84,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
     applyActionCode(auth, actionCode)
       .then(() => {
-        messageEl.textContent = "Success! Your email is verified. You can now return to RNBO.";
+        messageEl.textContent = "Hooray! Your email is verified. You can now log in to the app!";
       })
       .catch(() => {
         messageEl.textContent = "Verification failed. This link may be expired or already used.";
