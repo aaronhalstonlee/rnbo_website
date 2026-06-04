@@ -2,15 +2,14 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.0/firebas
 import { getAuth, connectAuthEmulator, createUserWithEmailAndPassword, sendEmailVerification, applyActionCode } from "https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB7ub6laXL3hUdZ_cxMIIRaLQS-inZGJu4",
-  authDomain: "rnbo-test-2.firebaseapp.com",
-  projectId: "rnbo-test-2",
-  storageBucket: "rnbo-test-2.firebasestorage.app",
-  messagingSenderId: "225416844432",
-  appId: "1:225416844432:web:1e12e87e77bbc20c5b7415",
-  measurementId: "G-6JN094D5N9"
+  apiKey: "AIzaSyCLituCSwWWs5BKaZMhC6RX51bpheRFpSY",
+  authDomain: "rainbo-c3c84.firebaseapp.com",
+  projectId: "rainbo-c3c84",
+  storageBucket: "rainbo-c3c84.firebasestorage.app",
+  messagingSenderId: "425252252609",
+  appId: "1:425252252609:web:3a16611cc55e5e5b8b9d40",
+  measurementId: "G-TQSWVJM539"
 };
-
 
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
