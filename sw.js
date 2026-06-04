@@ -1,4 +1,4 @@
-const CACHE_NAME = 'rnbo-v2';
+const CACHE_NAME = 'rnbo-v3';
 const PRECACHE = [
   '/',
   '/index.html',
